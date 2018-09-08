@@ -1,4 +1,3 @@
-from django.urls import reverse
 from django.http import JsonResponse
 from django.contrib.contenttypes.models import ContentType
 from .models import Comment
@@ -22,7 +21,10 @@ def update_comment(request):
             comment.reply_to = parent.user
         comment.save()
 
-        # 返回数据
+        # 发送邮件通知
+        comment.send_email()
+
+        #  返回数据
         data['status'] = "SUCCESS"
         data['username'] = comment.user.get_nickname_username()
         data['comment_time'] = comment.comment_time.strftime('%Y-%m-%d %H:%M:%S')
