@@ -3,6 +3,7 @@ from django.contrib import auth
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
+
 class LoginForm(forms.Form):
     username_or_email = forms.CharField(label='用户名或邮箱',
                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '请输入用户名或邮箱'}))
@@ -25,6 +26,7 @@ class LoginForm(forms.Form):
         else:
             self.cleaned_data['user'] = user
         return self.cleaned_data
+
 
 class RegForm(forms.Form):
     username = forms.CharField(

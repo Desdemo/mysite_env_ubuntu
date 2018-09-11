@@ -4,10 +4,14 @@ from django.urls import reverse
 from django.contrib.contenttypes.fields import GenericRelation
 from ckeditor_uploader.fields import RichTextUploadingField
 from read_statistics.models import ReadExpandMethod, ReadDeatil
+
+
 class BlogType(models.Model):
     type_name = models.CharField(max_length=15)
+
     def __str__(self):
         return self.type_name
+
 
 class Blog(models.Model, ReadExpandMethod):
     title = models.CharField(max_length=50)
@@ -17,7 +21,6 @@ class Blog(models.Model, ReadExpandMethod):
     read_details = GenericRelation(ReadDeatil)
     created_time = models.DateTimeField(auto_now_add=True)
     last_updated_time = models.DateTimeField(auto_now=True)
-
 
     def get_url(self):
         return reverse('blog_detail', kwargs={'blog_pk': self.pk})
