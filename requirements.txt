@@ -1,7 +1,7 @@
 asn1crypto==0.24.0
 cffi==1.11.5
 cryptography==2.3.1
-Django==2.0
+Django==2.2.10
 django-ckeditor==5.4.0
 django-js-asset==1.1.0
 freeze==1.0.10
